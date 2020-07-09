@@ -8,7 +8,7 @@
             <div class="col-sm-12">
                 <div class="d-flex justify-content-between align-items-center create">
                     <h1>Student List</h1>
-                    <a class="btn btn-info" href="{{ route('students.create')}}">Create</a>
+                    <a class="btn btn-primary" href="{{ route('students.create')}}">Create</a>
                 </div>
                 <table class="table">
                     <thead>
@@ -24,12 +24,12 @@
                     <tbody>
                         @foreach ($students_list as $student)
                             <tr>
-                                <td>{{ $student->id }}</td>
-                                <td>{{ $student->matricola }}</td>
-                                <td>{{ $student->first_name }}</td>
-                                <td>{{ $student->last_name }}</td>
-                                <td>{{ $student->email }}</td>
-                                <td><a href="{{ route('students.show', ['student' => $student->id]) }}"></a> </td>
+                                <td class="text-center">{{ $student->id }}</td>
+                                <td class="text-center">{{ $student->matricola }}</td>
+                                <td class="text-center">{{ $student->first_name }}</td>
+                                <td class="text-center">{{ $student->last_name }}</td>
+                                <td class="text-center">{{ $student->email }}</td>
+                                <td class="text-center"><a class="btn btn-info" href="{{ route('students.show', ['student' => $student->id]) }}">Dati studente</a> </td>
                             </tr>
                         @endforeach
                     </tbody>
