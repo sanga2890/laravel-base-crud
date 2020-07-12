@@ -29,7 +29,16 @@
                                 <td class="text-center">{{ $student->first_name }}</td>
                                 <td class="text-center">{{ $student->last_name }}</td>
                                 <td class="text-center">{{ $student->email }}</td>
-                                <td class="text-center"><a class="btn btn-info" href="{{ route('students.show', ['student' => $student->id]) }}">Dati studente</a> </td>
+                                <td class="text-center"><a class="btn btn-info" href="{{ route('students.show', ['student' => $student->id]) }}">Data</a>
+                                <a class="btn btn-secondary" href="{{ route('students.edit', ['student' => $student->id]) }}">Edit</a>
+                                <form action="{{ route('students.destroy', ['student' => $student->id]) }}" method="post">
+                                    @method('DELETE')
+                                    @csrf
+                                    <input type="submit" class="btn btn-danger" value="Delete">
+                                    </td>
+                                </form>
+
+
                             </tr>
                         @endforeach
                     </tbody>

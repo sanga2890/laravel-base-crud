@@ -36,10 +36,17 @@ class StudentController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'matricola' => 'required|numeric|unique:students,matricola|max:999999',
+            'first_name' => 'required|max:50',
+            'last_name' => 'required|max:50',
+            'email' => 'required|max:50'
+        ]);
         $data = $request->all();
         $new_student = new Student();
         $new_student->fill($data);
         $new_student->save();
+        return redirect()->route('students.index');
     }
 
     /**
@@ -62,7 +69,8 @@ class StudentController extends Controller
      */
     public function edit($id)
     {
-        //
+        $student = Student::find($id);
+        return view('students.edit', ['students_list' => $student]);
     }
 
     /**
@@ -74,7 +82,16 @@ class StudentController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $request->validate([
+            'matricola' => 'required|numeric|unique:students,matricola|max:999999',
+            'first_name' => 'required|max:50',
+            'last_name' => 'required|max:50',
+            'email' => 'required|max:50'
+        ]);
+        $data = $request->all();
+        $student = Student::find($id);
+        $student->update($data);
+        return redirect()->route('students.index');
     }
 
     /**
@@ -85,6 +102,8 @@ class StudentController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $student = Student::find($id);
+        $student->delete();
+        return redirect()->route('students.index');
     }
 }
