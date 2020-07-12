@@ -29,8 +29,8 @@
                                 <td class="text-center">{{ $student->first_name }}</td>
                                 <td class="text-center">{{ $student->last_name }}</td>
                                 <td class="text-center">{{ $student->email }}</td>
-                                <td class="text-center"><a class="btn btn-info" href="{{ route('students.show', ['student' => $student->id]) }}">Data</a>
-                                <a class="btn btn-secondary" href="{{ route('students.edit', ['student' => $student->id]) }}">Edit</a>
+                                <td class="text-center d-flex"><a class="btn btn-info mr-1" href="{{ route('students.show', ['student' => $student->id]) }}">Data</a>
+                                <a class="btn btn-secondary mr-1" href="{{ route('students.edit', ['student' => $student->id]) }}">Edit</a>
                                 <form action="{{ route('students.destroy', ['student' => $student->id]) }}" method="post">
                                     @method('DELETE')
                                     @csrf
